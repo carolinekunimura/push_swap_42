@@ -6,7 +6,7 @@
 #    By: ckunimur <ckunimur@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/17 16:04:45 by ckunimur          #+#    #+#              #
-#    Updated: 2023/05/22 17:22:00 by ckunimur         ###   ########.fr        #
+#    Updated: 2023/05/22 17:30:43 by ckunimur         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,4 +27,5 @@ libft:
 	make -C $(PATH_LIBFT)
 
 clean:
-	rm -f $(NAME)
+	rm -f $(NAME) $(PATH_LIBFT)libft.a
+	make clean -C $(PATH_LIBFT)
