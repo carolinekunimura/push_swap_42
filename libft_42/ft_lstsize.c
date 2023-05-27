@@ -6,13 +6,13 @@
 /*   By: ckunimur <ckunimur@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 00:27:07 by ckunimur          #+#    #+#             */
-/*   Updated: 2022/10/08 02:32:38 by ckunimur         ###   ########.fr       */
+/*   Updated: 2023/05/26 21:45:26 by ckunimur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_lstsize(t_list *lst)
+int	ft_lstsize(t_numbers *lst)
 {
 	int	count;
 

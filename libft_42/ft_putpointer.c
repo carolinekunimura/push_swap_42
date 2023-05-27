@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_putpointer.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ckunimur <ckunimur@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/01 00:27:00 by ckunimur          #+#    #+#             */
-/*   Updated: 2023/05/26 21:42:51 by ckunimur         ###   ########.fr       */
+/*   Created: 2022/11/09 21:51:09 by ckunimur          #+#    #+#             */
+/*   Updated: 2022/11/10 17:25:23 by ckunimur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-t_numbers	*ft_lstnew(char	*argv)
+int	ft_putpointer(unsigned long int ptr)
 {
-	t_numbers	*list_a;
+	int	count;
 
-	list_a = (t_numbers *)ft_calloc(1, sizeof(t_numbers));
-	if (list_a == NULL)
-		return (NULL);
-	list_a->number = ft_atoi(argv);
-	list_a->next = NULL;
-	return (list_a);
+	count = 0;
+	if (!ptr)
+	{
+		count += write (1, "(nil)", 5);
+		return (count);
+	}
+	else
+	{
+		count = write (1, "0x", 2);
+		count += ft_puthexa(ptr, 'x');
+	}
+	return (count);
 }

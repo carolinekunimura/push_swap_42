@@ -1,28 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   ft_putint.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ckunimur <ckunimur@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/30 23:55:17 by ckunimur          #+#    #+#             */
-/*   Updated: 2023/05/26 21:45:04 by ckunimur         ###   ########.fr       */
+/*   Created: 2022/11/05 00:10:06 by ckunimur          #+#    #+#             */
+/*   Updated: 2022/11/10 17:29:03 by ckunimur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	ft_lstclear(t_numbers **lst, void (*del)(void *))
+int	ft_putint(int n)
 {
-	t_number	*aux;
+	int	count;
 
-	if (!*lst || !del)
-		return ;
-	while (*lst)
+	count = 0;
+	if (n == -2147483648)
 	{
-		aux = (*lst)->next;
-		ft_lstdelone(*lst, del);
-		*lst = aux;
+		count += ft_putchar('-');
+		count += ft_putchar('2');
+		count += ft_putint(147483648);
 	}
-	*lst = NULL;
+	else if (n < 0)
+	{
+		count += ft_putchar('-');
+		count += ft_putint(-1 * n);
+	}
+	else if (n <= 9)
+		count += ft_putchar(n + 48);
+	else if (n > 9)
+	{
+		count += ft_putint(n / 10);
+		count += ft_putchar((n % 10) + 48);
+	}
+	return (count);
 }

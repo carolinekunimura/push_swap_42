@@ -6,7 +6,7 @@
 #    By: ckunimur <ckunimur@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/17 16:04:45 by ckunimur          #+#    #+#              #
-#    Updated: 2023/05/22 17:30:43 by ckunimur         ###   ########.fr        #
+#    Updated: 2023/05/26 14:25:50 by ckunimur         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,12 +16,13 @@ SRC = ./src/push_swap.c $(PATH_LIBFT)libft.a
 
 FLAGS = -Wall -Wextra -Werror
 
+LIBFT = libft
+
 PATH_LIBFT = ./libft_42/
 
 
-all: $(PATH_LIBFT)libft.a
-	echo socorrro
-	gcc $(SRC) $(FLAGS) -o $(NAME)
+all: libft
+	gcc $(SRC) $(FLAGS) $(PATH_LIBFT)libft.a -o $(NAME)
 
 libft:
 	make -C $(PATH_LIBFT)

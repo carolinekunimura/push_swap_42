@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ckunimur <ckunimur@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/01 00:27:00 by ckunimur          #+#    #+#             */
-/*   Updated: 2023/05/26 21:42:51 by ckunimur         ###   ########.fr       */
+/*   Created: 2022/09/27 16:58:55 by ckunimur          #+#    #+#             */
+/*   Updated: 2022/11/10 17:24:57 by ckunimur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-t_numbers	*ft_lstnew(char	*argv)
+int	ft_putstr(char *s)
 {
-	t_numbers	*list_a;
+	int	i;
 
-	list_a = (t_numbers *)ft_calloc(1, sizeof(t_numbers));
-	if (list_a == NULL)
-		return (NULL);
-	list_a->number = ft_atoi(argv);
-	list_a->next = NULL;
-	return (list_a);
+	i = 0;
+	if (!s)
+		return (write(1, "(null)", 6));
+	while (s[i] != '\0')
+	{
+		write(1, &s[i], 1);
+		i++;
+	}
+	return (i);
 }
