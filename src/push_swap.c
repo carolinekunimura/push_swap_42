@@ -6,29 +6,37 @@
 /*   By: ckunimur <ckunimur@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 16:04:38 by ckunimur          #+#    #+#             */
-/*   Updated: 2023/05/29 18:09:45 by ckunimur         ###   ########.fr       */
+/*   Updated: 2023/06/01 13:35:07 by ckunimur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/push_swap.h"
 
-int	validate_numbers(char *argv)
+int	valid_numbers(char **argv)
 {
 	int		i;
-	char	**temp;
+	int		j;
 
-	i = 0;
+	i = 1;
 	while(argv[i])
 	{
-		if(ft_isdigit(argv[i]) == 0 && argv[i] != ' ')
+		j = 0;
+		if(argv[i][j] == ' ' || argv[i][j] == '-' || argv[i][j] == '+')
+			j++;
+		while(argv[i][j])
 		{
-			ft_printf("error 1\n");
-				return(0);
+			if(ft_isdigit(argv[i][j]) == 0)
+			{
+				ft_printf(" not number\n");
+				return(1);
+			}
+			j++;
 		}
+		ft_printf("%s\n", argv[i]);
 		i++;
 	}
-	temp = ft_split(argv, ' ');
-	return(1);
+	ft_printf("is number\n");
+	return(0);
 }
 
 t_numbers	*ft_init_list(int argc, char **argv, t_numbers	*list)
@@ -55,8 +63,13 @@ int main(int argc, char **argv)
 	list_a = NULL;
 	if(argc < 3)
 		return(1);
+	if (valid_numbers(argv) == 0)
+	{
+		ft_printf("error");
+		return(0);
+	}
 	list_a = ft_init_list(argc, argv, list_a);
-	ft_printf("foi\n");
+
 	return(0);
 }
 
