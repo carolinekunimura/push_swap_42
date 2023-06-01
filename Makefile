@@ -6,7 +6,7 @@
 #    By: ckunimur <ckunimur@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/17 16:04:45 by ckunimur          #+#    #+#              #
-#    Updated: 2023/05/26 14:25:50 by ckunimur         ###   ########.fr        #
+#    Updated: 2023/06/01 13:38:19 by ckunimur         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ PATH_LIBFT = ./libft_42/
 
 
 all: libft
-	gcc $(SRC) $(FLAGS) $(PATH_LIBFT)libft.a -o $(NAME)
+	gcc -g $(SRC) $(FLAGS) $(PATH_LIBFT)libft.a -o $(NAME)
 
 libft:
 	make -C $(PATH_LIBFT)

@@ -6,7 +6,7 @@
 /*   By: ckunimur <ckunimur@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 16:04:38 by ckunimur          #+#    #+#             */
-/*   Updated: 2023/06/01 13:35:07 by ckunimur         ###   ########.fr       */
+/*   Updated: 2023/06/01 17:09:32 by ckunimur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ int	valid_numbers(char **argv)
 			j++;
 		while(argv[i][j])
 		{
-			if(ft_isdigit(argv[i][j]) == 0)
+			if(ft_isdigit(argv[i][j]) == 0 && (argv[i][j] != ' ' || ft_isdigit(argv[i][j + 1]) == 0))
 			{
-				ft_printf(" not number\n");
+				ft_printf("not number\n");
 				return(1);
 			}
 			j++;
@@ -39,36 +39,37 @@ int	valid_numbers(char **argv)
 	return(0);
 }
 
-t_numbers	*ft_init_list(int argc, char **argv, t_numbers	*list)
+t_numbers	*ft_init_stack(int argc, char **argv, t_numbers	*stack)
 {
 	t_numbers	*temp;
 	int			i;
 	
 	i = 1;
-	list = ft_lstnew(argv[i++]);
-	temp = list;
+	stack = ft_lstnew(argv[i++]);
+	temp = stack;
 	while (i < (argc))
 	{
 		temp->next = ft_lstnew(argv[i]);
 		temp = temp->next;
 		i++;
 	}
-	return(list);
+	return(stack);
 }
 
 int main(int argc, char **argv)
 {
-	t_numbers	*list_a;
+	t_numbers	*stack_a;
+	t_numbers	*stack_b;
 
-	list_a = NULL;
 	if(argc < 3)
 		return(1);
-	if (valid_numbers(argv) == 0)
+	if (valid_numbers(argv) != 0)
 	{
-		ft_printf("error");
+		ft_printf("error\n");
 		return(0);
 	}
-	list_a = ft_init_list(argc, argv, list_a);
+	stack_a = ft_init_stack(argc, argv, stack_a);
+	stack_b = NULL;
 
 	return(0);
 }
