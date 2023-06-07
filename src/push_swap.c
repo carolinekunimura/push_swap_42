@@ -6,7 +6,7 @@
 /*   By: ckunimur <ckunimur@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 16:04:38 by ckunimur          #+#    #+#             */
-/*   Updated: 2023/06/07 17:56:14 by ckunimur         ###   ########.fr       */
+/*   Updated: 2023/06/07 18:49:35 by ckunimur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ int	valid_numbers(char **argv)
 		ft_printf("%s\n", argv[i]);
 		i++;
 	}
-	ft_printf("is number\n");
 	return(0);
 }
 void	ft_print_stack(t_numbers *stack)
@@ -61,18 +60,20 @@ t_numbers	*ft_init_stack(int argc, char **argv, t_numbers	*stack)
 		temp = temp->next;
 		i++;
 	}
-	ft_print_stack(stack);
 	return(stack);
 }
 
-void	ft_push_a(t_numbers	*stack_a, t_numbers	*stack_b)
+void	ft_push_a(t_numbers	**stack_a, t_numbers	**stack_b)
 {
 	t_numbers	*temp;
 	
-	temp = stack_a;
-	stack_a = stack_a->next;
-	temp->next = stack_b;
-	stack_b = temp;
+	temp = *stack_a;
+	(*stack_a) = (*stack_a)->next;
+	temp->next = *stack_b;
+	(*stack_b) = temp;
+	ft_print_stack(*stack_a);
+	ft_printf("\n");
+	ft_print_stack(*stack_b);
 }
 
 void	ft_push_b(t_numbers	*stack_a, t_numbers	*stack_b)
@@ -97,23 +98,48 @@ void	ft_swap(t_numbers **stack)
 		temp = (*stack)->next;
 		(*stack)->next = (*stack)->next->next;
 		temp->next = *stack;
-		*stack = temp;		
+		*stack = temp;
+		ft_print_stack(*stack);	
 	}
 	else
 		return ;
 }
 
+void	ft_rotate(t_numbers	**stack)
+{
+	t_numbers	*temp;
+
+	temp = *stack;
+	while (temp->next != NULL)
+		temp = temp->next;
+	if (temp->next == NULL)
+	{
+		temp->next = *stack;
+		(*stack) = (*stack)->next;
+		temp->next->next = NULL;
+	}
+}
+
+void	ft_rotatereverse(t_numbers **stack)
+{
+	t_numbers	*temp;
+	t_numbers	*last;
+	temp = *stack;
+	
+	while (temp->next->next != NULL)
+		temp = temp->next;
+	if(temp->next->next == NULL)
+	{
+		last = temp->next;
+		temp->next = NULL;
+		last->next = *stack;
+		*stack  = last;
+		ft_printf("\n");
+		ft_print_stack(*stack);
+	}
+	return ;
+}
 /*
-
-int	ft_rotate(t_numbers	*stack)
-{
-
-}
-
-int	ft_rotatereverse(t_numbers *stack)
-{
-
-}
 
 int	ft_sorttwo(t_numbers	*stack_a)
 {
@@ -136,16 +162,19 @@ int main(int argc, char **argv)
 	}
 	stack_a = ft_init_stack(argc, argv, stack_a);
 	stack_b = NULL;
-/*	if(ft_lstsize(stack_a) == 3)
 
 	if(ft_lstsize(stack_a) == 1)
 		return(0);
 	if(ft_lstsize(stack_a) == 2)
-		ft_sorttwo(stack_a);
-		ft_sortthree(stack_a);
+	{
+		if(stack_a->number > stack_a->next->number)
+			ft_swap(&stack_a);
+	}
+	if(ft_lstsize(stack_a) == 3)
+		ft_push_a(&stack_a, &stack_b);
 	if (ft_lstsize(stack_a) > 3)
 	{
-		radixx;
+		ft_rotatereverse(&stack_a);
 	} 
-*/	return(0);
+	return(0);
 }
