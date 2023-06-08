@@ -6,13 +6,15 @@
 #    By: ckunimur <ckunimur@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/17 16:04:45 by ckunimur          #+#    #+#              #
-#    Updated: 2023/06/01 13:38:19 by ckunimur         ###   ########.fr        #
+#    Updated: 2023/06/08 14:56:26 by ckunimur         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 
-SRC = ./src/push_swap.c $(PATH_LIBFT)libft.a
+SRC = $(PATH_SRC)push_swap.c $(PATH_SRC)mov_a.c $(PATH_SRC)mov_b.c  $(PATH_LIBFT)libft.a
+
+PATH_SRC = ./src/
 
 FLAGS = -Wall -Wextra -Werror
 
