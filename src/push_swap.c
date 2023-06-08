@@ -6,7 +6,7 @@
 /*   By: ckunimur <ckunimur@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 16:04:38 by ckunimur          #+#    #+#             */
-/*   Updated: 2023/06/08 19:07:42 by ckunimur         ###   ########.fr       */
+/*   Updated: 2023/06/08 19:43:12 by ckunimur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	ft_print_stack(t_numbers *stack)
 	while (stack)
 	{
 		ft_printf("%i\n", stack->number);
+		ft_printf("%i\n", stack->index);
 		stack = stack->next;
 	}
 }
@@ -54,37 +55,39 @@ t_numbers	*ft_init_stack(int argc, char **argv, t_numbers	*stack)
 	i = 1;
 	stack = ft_lstnew(argv[i++]);
 	temp = stack;
-	ft_put_index(argc, temp);
 	while (i < (argc))
 	{
 		temp->next = ft_lstnew(argv[i]);
 		temp = temp->next;
 		i++;
 	}
+	ft_put_index(stack);
 	return(stack);
 }
 
-int	*ft_put_index(int argc, t_numbers *temp)
+void	ft_put_index(t_numbers *stack)
 {
-	int	i;
-	int	j;
-	int	*index;
+	int 		index;
+	t_numbers	*temp;
+	t_numbers	*aux;
 
-	i = 1;
-	index = (int)*ft_calloc(sizeof(int), argc);
-	while(i < argc)
+	temp = stack;
+	while (temp != NULL)
 	{
-		j = 2;
-		while(j < argc)
+		index = 0;
+		aux = stack;
+		while(aux != NULL)
 		{
-			if(argv[i] > argv[j])
-				index[i] += 1;
-			j++;
-			i++;
+			if(temp->number > aux->number)
+				index++;
+			aux = aux->next;	
 		}
+		temp->index = index;
+		temp = temp->next;
 	}
-	return (&index);
+	ft_printf("FOI");
 }
+
 void	ft_sorttwo(t_numbers	**stack_a)
 {
 	if((*stack_a)->number > (*stack_a)->next->number)
