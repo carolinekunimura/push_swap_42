@@ -6,7 +6,7 @@
 /*   By: ckunimur <ckunimur@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 14:45:04 by ckunimur          #+#    #+#             */
-/*   Updated: 2023/06/08 14:57:22 by ckunimur         ###   ########.fr       */
+/*   Updated: 2023/06/08 15:27:14 by ckunimur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_push_a(t_numbers	**stack_a, t_numbers	**stack_b)
 	(*stack_a) = (*stack_a)->next;
 	temp->next = *stack_b;
 	(*stack_b) = temp;
-	ft_printf("pb\n");
+	ft_printf("pa\n");
 }
 
 void	ft_swap_a(t_numbers **stack)
@@ -36,7 +36,6 @@ void	ft_swap_a(t_numbers **stack)
 		temp->next = *stack;
 		*stack = temp;
 		ft_printf("sa\n");
-		ft_print_stack(*stack);	
 	}
 	else
 		return ;
@@ -73,7 +72,6 @@ void	ft_rotatereverse_a(t_numbers **stack)
 		last->next = *stack;
 		*stack  = last;
 		ft_printf("rra\n");
-		ft_print_stack(*stack);
 	}
 	return ;
 }
