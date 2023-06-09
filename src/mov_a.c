@@ -6,7 +6,7 @@
 /*   By: ckunimur <ckunimur@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 14:45:04 by ckunimur          #+#    #+#             */
-/*   Updated: 2023/06/08 15:27:14 by ckunimur         ###   ########.fr       */
+/*   Updated: 2023/06/09 19:51:57 by ckunimur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	ft_rotate_a(t_numbers	**stack)
 	if (temp->next == NULL)
 	{
 		temp->next = *stack;
-		(*stack) = (*stack)->next;
+		*stack = (*stack)->next;
 		temp->next->next = NULL;
 		ft_printf("ra\n");
 	}
