@@ -6,31 +6,29 @@
 /*   By: ckunimur <ckunimur@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 14:45:29 by ckunimur          #+#    #+#             */
-/*   Updated: 2023/06/08 15:03:38 by ckunimur         ###   ########.fr       */
+/*   Updated: 2023/06/10 19:04:23 by ckunimur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/push_swap.h"
 
-
 void	ft_push_b(t_numbers	**stack_a, t_numbers	**stack_b)
 {
 	t_numbers	*temp;
-	
+
 	temp = *stack_b;
 	(*stack_b) = (*stack_b)->next;
 	temp->next = *stack_a;
 	*stack_a = temp;
-	ft_printf("pb\n");
 }
 
-void	ft_swap_b(t_numbers **stack)
+void	ft_swap_b(t_numbers	**stack)
 {
 	t_numbers	*temp;
-	
-	if(stack == NULL)
+
+	if (stack == NULL)
 		return ;
-	if(stack != NULL && (*stack)->next != NULL)
+	if (stack != NULL && (*stack)->next != NULL)
 	{
 		temp = (*stack)->next;
 		(*stack)->next = (*stack)->next->next;
@@ -62,16 +60,16 @@ void	ft_rotatereverse_b(t_numbers **stack)
 {
 	t_numbers	*temp;
 	t_numbers	*last;
+
 	temp = *stack;
-	
 	while (temp->next->next != NULL)
 		temp = temp->next;
-	if(temp->next->next == NULL)
+	if (temp->next->next == NULL)
 	{
 		last = temp->next;
 		temp->next = NULL;
 		last->next = *stack;
-		*stack  = last;
+		*stack = last;
 		ft_printf("rrb\n");
 	}
 	return ;

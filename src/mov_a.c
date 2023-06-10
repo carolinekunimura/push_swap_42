@@ -6,7 +6,7 @@
 /*   By: ckunimur <ckunimur@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 14:45:04 by ckunimur          #+#    #+#             */
-/*   Updated: 2023/06/09 19:51:57 by ckunimur         ###   ########.fr       */
+/*   Updated: 2023/06/10 19:19:46 by ckunimur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 void	ft_push_a(t_numbers	**stack_a, t_numbers	**stack_b)
 {
 	t_numbers	*temp;
-	
+
+	if(!(*stack_a))
+		return ;
 	temp = *stack_a;
 	(*stack_a) = (*stack_a)->next;
 	temp->next = *stack_b;
@@ -27,9 +29,9 @@ void	ft_swap_a(t_numbers **stack)
 {
 	t_numbers	*temp;
 	
-	if(stack == NULL)
+	if (stack == NULL)
 		return ;
-	if(stack != NULL && (*stack)->next != NULL)
+	if (stack != NULL && (*stack)->next != NULL)
 	{
 		temp = (*stack)->next;
 		(*stack)->next = (*stack)->next->next;
@@ -46,6 +48,8 @@ void	ft_rotate_a(t_numbers	**stack)
 	t_numbers	*temp;
 
 	temp = *stack;
+	if ((*stack)->next == NULL)
+		return ;
 	while (temp->next != NULL)
 		temp = temp->next;
 	if (temp->next == NULL)
@@ -61,16 +65,18 @@ void	ft_rotatereverse_a(t_numbers **stack)
 {
 	t_numbers	*temp;
 	t_numbers	*last;
+
 	temp = *stack;
-	
+	if ((*stack)->next == NULL)
+		return ;
 	while (temp->next->next != NULL)
 		temp = temp->next;
-	if(temp->next->next == NULL)
+	if (temp->next->next == NULL)
 	{
 		last = temp->next;
 		temp->next = NULL;
 		last->next = *stack;
-		*stack  = last;
+		*stack = last;
 		ft_printf("rra\n");
 	}
 	return ;

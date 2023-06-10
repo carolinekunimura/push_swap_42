@@ -6,13 +6,13 @@
 #    By: ckunimur <ckunimur@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/17 16:04:45 by ckunimur          #+#    #+#              #
-#    Updated: 2023/06/08 14:56:26 by ckunimur         ###   ########.fr        #
+#    Updated: 2023/06/10 18:16:56 by ckunimur         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 
-SRC = $(PATH_SRC)push_swap.c $(PATH_SRC)mov_a.c $(PATH_SRC)mov_b.c  $(PATH_LIBFT)libft.a
+SRC = $(PATH_SRC)push_swap.c $(PATH_SRC)mov_a.c $(PATH_SRC)mov_b.c  $(PATH_LIBFT)libft.a $(PATH_SRC)ft_radix.c $(PATH_SRC)sort_numbers.c
 
 PATH_SRC = ./src/
 
@@ -32,3 +32,8 @@ libft:
 clean:
 	rm -f $(NAME) $(PATH_LIBFT)libft.a
 	make clean -C $(PATH_LIBFT)
+
+fclean: clean
+	rm -rf $(NAME)
+
+re: fclean all
