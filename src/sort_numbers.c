@@ -6,7 +6,7 @@
 /*   By: ckunimur <ckunimur@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 15:03:13 by ckunimur          #+#    #+#             */
-/*   Updated: 2023/06/10 18:11:18 by ckunimur         ###   ########.fr       */
+/*   Updated: 2023/06/11 10:19:09 by ckunimur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	ft_sort_fourfive(t_numbers **stack_a, t_numbers **stack_b, int argc)
 	{
 		temp = *stack_a;
 		if (temp->index < 2)
-			ft_push_a(stack_a, stack_b);
+			ft_push_b(stack_a, stack_b);
 		else
 			ft_rotate_a(stack_a);
 		i++;
@@ -67,7 +67,7 @@ void	ft_sort_fourfive(t_numbers **stack_a, t_numbers **stack_b, int argc)
 		ft_sorttwo(stack_a);
 	if ((*stack_b)->number < (*stack_b)->next->number)
 		ft_swap_b(stack_b);
-	ft_push_b(stack_a, stack_b);
-	ft_push_b(stack_a, stack_b);
+	ft_push_a(stack_a, stack_b);
+	ft_push_a(stack_a, stack_b);
 	return ;
 }

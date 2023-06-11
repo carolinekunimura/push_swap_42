@@ -6,7 +6,7 @@
 /*   By: ckunimur <ckunimur@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 16:05:18 by ckunimur          #+#    #+#             */
-/*   Updated: 2023/06/10 18:30:55 by ckunimur         ###   ########.fr       */
+/*   Updated: 2023/06/11 13:46:33 by ckunimur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,9 @@ void		ft_rotate_b(t_numbers	**stack);
 void		ft_rotatereverse_a(t_numbers **stack);
 void		ft_rotatereverse_b(t_numbers **stack);
 void		ft_print_stack(t_numbers *stack);
-int			ft_check_stack(t_numbers **stack_a);
-void	ft_radix(int argc, t_numbers **stack_a, t_numbers **stack_b);
+void		ft_radix(int argc, t_numbers **stack_a, t_numbers **stack_b);
+void		ft_push_back(t_numbers **stack_a, t_numbers **stack_b);
+int			ft_count_digit(int argc);
+void		ft_free(t_numbers **stack);
 
 #endif

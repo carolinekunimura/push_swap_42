@@ -6,18 +6,21 @@
 /*   By: ckunimur <ckunimur@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 16:04:38 by ckunimur          #+#    #+#             */
-/*   Updated: 2023/06/10 19:09:57 by ckunimur         ###   ########.fr       */
+/*   Updated: 2023/06/11 14:09:28 by ckunimur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/push_swap.h"
 
-void	ft_print_stack(t_numbers	*stack)
+void	ft_free(t_numbers **stack)
 {
-	while (stack)
+	t_numbers *temp;
+
+	while(*stack)
 	{
-		ft_printf("%i\n", stack->number);
-		stack = stack->next;
+		temp = *stack;
+		*stack = (*stack)->next;
+		free(temp);
 	}
 }
 
@@ -25,24 +28,27 @@ int	valid_numbers(char	**argv)
 {
 	int		i;
 	int		j;
+	char	*temp;
 
-	i = 1;
-	while (argv[i])
+	i = 0;
+	while (argv[++i])
 	{
 		j = 0;
-		if (argv[i][j] == ' ' || argv[i][j] == '-' || argv[i][j] == '+')
+		temp = ft_strtrim(argv[i], " ");
+		if (!temp)
+			return (1);
+		if (temp[j] == '-' || temp[j] == '+')
 			j++;
-		while (argv[i][j])
+		while (temp[j])
 		{
-			if (ft_isdigit(argv[i][j]) == 0 && (argv[i][j] != ' '
-				|| ft_isdigit(argv[i][j + 1]) == 0))
+			if (ft_isdigit(temp[j]) == 0)
 			{
-				ft_printf("not number\n");
+				free(temp);
 				return (1);
 			}
 			j++;
 		}
-		i++;
+		free(temp);
 	}
 	return (0);
 }
@@ -93,7 +99,7 @@ int	main(int argc, char **argv)
 	t_numbers	*stack_b;
 
 	stack_a = NULL;
-	if (argc < 3)
+	if (argc < 2)
 		return (1);
 	if (valid_numbers(argv) != 0)
 	{
@@ -102,15 +108,17 @@ int	main(int argc, char **argv)
 	}
 	stack_a = ft_init_stack(argc, argv, stack_a);
 	stack_b = NULL;
-/*	if (ft_lstsize(stack_a) == 1)
+	if (ft_lstsize(stack_a) == 1)
 		return (0);
-	if (ft_lstsize(stack_a) == 2)
+	else if (ft_lstsize(stack_a) == 2)
 		ft_sorttwo(&stack_a);
-	if (ft_lstsize(stack_a) == 3)
+	else if (ft_lstsize(stack_a) == 3)
 		ft_sortthree(&stack_a);
-	if (ft_lstsize(stack_a) > 3 && ft_lstsize(stack_a) < 6)
+	else if (ft_lstsize(stack_a) > 3 && ft_lstsize(stack_a) < 6)
 		ft_sort_fourfive(&stack_a, &stack_b, argc - 1);
 	else
-*/	ft_radix(argc, &stack_a, &stack_b);
+		ft_radix(argc, &stack_a, &stack_b);
+	ft_free(&stack_a);
+	ft_free(&stack_b);
 	return (0);
 }

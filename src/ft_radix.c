@@ -6,38 +6,29 @@
 /*   By: ckunimur <ckunimur@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 15:04:41 by ckunimur          #+#    #+#             */
-/*   Updated: 2023/06/10 19:32:59 by ckunimur         ###   ########.fr       */
+/*   Updated: 2023/06/11 13:37:00 by ckunimur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/push_swap.h"
 
-int		ft_check_stack(t_numbers **stack_a)
+int ft_count_digit(int argc)
 {
-	int			i;
-	t_numbers	*temp;
+	int count;
 
-	i = 0;
-	temp = *stack_a;
-	while(temp)
+	count = 0;
+	while (argc != 0)
 	{
-		if (i != temp->index)
-		{
-			ft_printf("nao ta na ordem");
-			return (0);
-		}
-		i++;
-		temp = temp->next;
+		argc /= 2;
+		count++;
 	}
-	ft_printf("ta na ordem");
-	return (1);
+	return count;
 }
 
-void	ft_push_bEck(t_numbers **stack_a, t_numbers **stack_b)
+void	ft_push_back(t_numbers **stack_a, t_numbers **stack_b)
 {
 	while(*stack_b)
-		ft_push_b(stack_a, stack_b);
-//	ft_printf("PUSHBACK");	
+		ft_push_a(stack_a, stack_b);
 	return ;
 }
 
@@ -47,28 +38,22 @@ void	ft_radix(int argc, t_numbers **stack_a, t_numbers **stack_b)
 	int	i;
 	int	j;
 
-	i = 1;
-	size = argc;
+	i = 0;
+	size = ft_count_digit(argc - 1);
 	ft_printf("%d\n", argc);
-	while (!ft_check_stack(stack_a))
+	while (i < size)
 	{
 		j = 0;
-		while(j < argc && !ft_check_stack(stack_a))
+		while(j < argc - 1)
 		{
-			printf("==========inicio============\n");
-			if (*stack_a && ((*stack_a)->index >> i) &1)
-				ft_push_a(stack_a, stack_b);
-			else
+			if (((*stack_a)->index >> i) & 1)
 				ft_rotate_a(stack_a);
+			else
+				ft_push_b(stack_a, stack_b);
 			j++;
-//			printf("==========Stack a================\n");
-//			ft_print_stack(*stack_a);
-//			printf("==========Stack b================\n");
-//			ft_print_stack(*stack_b);
-//			sleep(1);
-//			printf("==========fim====================\n");
 		}
-		ft_push_bEck(stack_a, stack_b);
+
+		ft_push_back(stack_a, stack_b);
 		i++;
 	}
 }

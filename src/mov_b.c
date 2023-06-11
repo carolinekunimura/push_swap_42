@@ -6,7 +6,7 @@
 /*   By: ckunimur <ckunimur@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 14:45:29 by ckunimur          #+#    #+#             */
-/*   Updated: 2023/06/10 19:04:23 by ckunimur         ###   ########.fr       */
+/*   Updated: 2023/06/11 10:18:40 by ckunimur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,13 @@ void	ft_push_b(t_numbers	**stack_a, t_numbers	**stack_b)
 {
 	t_numbers	*temp;
 
-	temp = *stack_b;
-	(*stack_b) = (*stack_b)->next;
-	temp->next = *stack_a;
-	*stack_a = temp;
+	if(!(*stack_a))
+		return ;
+	temp = *stack_a;
+	(*stack_a) = (*stack_a)->next;
+	temp->next = *stack_b;
+	(*stack_b) = temp;
+	ft_printf("pb\n");
 }
 
 void	ft_swap_b(t_numbers	**stack)
