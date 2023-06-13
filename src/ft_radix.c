@@ -6,15 +6,15 @@
 /*   By: ckunimur <ckunimur@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 15:04:41 by ckunimur          #+#    #+#             */
-/*   Updated: 2023/06/11 13:37:00 by ckunimur         ###   ########.fr       */
+/*   Updated: 2023/06/13 10:40:44 by ckunimur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/push_swap.h"
 
-int ft_count_digit(int argc)
+int	ft_count_digit(int argc)
 {
-	int count;
+	int	count;
 
 	count = 0;
 	while (argc != 0)
@@ -40,7 +40,6 @@ void	ft_radix(int argc, t_numbers **stack_a, t_numbers **stack_b)
 
 	i = 0;
 	size = ft_count_digit(argc - 1);
-	ft_printf("%d\n", argc);
 	while (i < size)
 	{
 		j = 0;
@@ -52,7 +51,6 @@ void	ft_radix(int argc, t_numbers **stack_a, t_numbers **stack_b)
 				ft_push_b(stack_a, stack_b);
 			j++;
 		}
-
 		ft_push_back(stack_a, stack_b);
 		i++;
 	}

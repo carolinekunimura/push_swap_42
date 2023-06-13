@@ -6,11 +6,12 @@
 /*   By: ckunimur <ckunimur@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 00:27:00 by ckunimur          #+#    #+#             */
-/*   Updated: 2023/05/31 16:20:30 by ckunimur         ###   ########.fr       */
+/*   Updated: 2023/06/13 12:14:29 by ckunimur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 t_numbers	*ft_lstnew(char	*argv)
 {

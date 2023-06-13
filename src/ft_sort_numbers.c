@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_numbers.c                                     :+:      :+:    :+:   */
+/*   ft_sort_numbers.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ckunimur <ckunimur@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 15:03:13 by ckunimur          #+#    #+#             */
-/*   Updated: 2023/06/11 10:19:09 by ckunimur         ###   ########.fr       */
+/*   Updated: 2023/06/13 11:05:02 by ckunimur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,14 @@ void	ft_sorttwo(t_numbers	**stack_a)
 
 void	ft_sortthree(t_numbers	**stack_a)
 {
-	if ((*stack_a)->number > ((*stack_a)->next->number)
-		&& (*stack_a)->next->number > ((*stack_a)->next->next->number))
+	while (!ft_check_stack(stack_a))
 	{
-		ft_swap_a(&*stack_a);
-		ft_rotatereverse_a(&*stack_a);
-	}
-	while (!((*stack_a)->number < ((*stack_a)->next->number)
-			&& (*stack_a)->next->number < ((*stack_a)->next->next->number)))
-	{
+		if ((*stack_a)->number > ((*stack_a)->next->number)
+			&& (*stack_a)->next->number > ((*stack_a)->next->next->number))
+		{
+			ft_swap_a(&*stack_a);
+			ft_rotatereverse_a(&*stack_a);
+		}
 		if ((*stack_a)->number > (*stack_a)->next->number
 			&& (*stack_a)->number < (*stack_a)->next->next->number)
 			ft_swap_a(stack_a);
@@ -70,4 +69,18 @@ void	ft_sort_fourfive(t_numbers **stack_a, t_numbers **stack_b, int argc)
 	ft_push_a(stack_a, stack_b);
 	ft_push_a(stack_a, stack_b);
 	return ;
+}
+
+void	ft_sort_numbers(t_numbers **stack_a, t_numbers **stack_b, int argc)
+{
+	if (ft_lstsize(*stack_a) == 1)
+		return ;
+	else if (ft_lstsize(*stack_a) == 2)
+		ft_sorttwo(stack_a);
+	else if (ft_lstsize(*stack_a) == 3)
+		ft_sortthree(stack_a);
+	else if (ft_lstsize(*stack_a) > 3 && ft_lstsize(*stack_a) < 6)
+		ft_sort_fourfive(stack_a, stack_b, argc - 1);
+	else
+		ft_radix(argc, stack_a, stack_b);
 }

@@ -6,7 +6,7 @@
 /*   By: ckunimur <ckunimur@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 16:04:38 by ckunimur          #+#    #+#             */
-/*   Updated: 2023/06/11 14:09:28 by ckunimur         ###   ########.fr       */
+/*   Updated: 2023/06/13 12:08:44 by ckunimur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	valid_numbers(char	**argv)
 			j++;
 		while (temp[j])
 		{
-			if (ft_isdigit(temp[j]) == 0)
+			if (ft_isdigit(temp[j]) == 0 || ft_strlen(&temp[j]) > 19)
 			{
 				free(temp);
 				return (1);
@@ -92,6 +92,17 @@ void	ft_put_index(t_numbers *stack)
 		temp = temp->next;
 	}
 }
+void	ft_print_stack(t_numbers *stack)
+{
+	t_numbers	*temp;
+
+	temp = stack;
+	while (temp)
+	{
+		ft_printf("%i\n", temp->number);
+		temp = temp->next;
+	}
+}
 
 int	main(int argc, char **argv)
 {
@@ -102,23 +113,13 @@ int	main(int argc, char **argv)
 	if (argc < 2)
 		return (1);
 	if (valid_numbers(argv) != 0)
-	{
-		ft_putstr_fd("error\n", 2);
-		return (0);
-	}
+		return (ft_printf("Error\n"));
 	stack_a = ft_init_stack(argc, argv, stack_a);
 	stack_b = NULL;
-	if (ft_lstsize(stack_a) == 1)
-		return (0);
-	else if (ft_lstsize(stack_a) == 2)
-		ft_sorttwo(&stack_a);
-	else if (ft_lstsize(stack_a) == 3)
-		ft_sortthree(&stack_a);
-	else if (ft_lstsize(stack_a) > 3 && ft_lstsize(stack_a) < 6)
-		ft_sort_fourfive(&stack_a, &stack_b, argc - 1);
-	else
-		ft_radix(argc, &stack_a, &stack_b);
+	if (ft_check_duplicate(&stack_a) != 0)
+		return (ft_printf("Error\n"));
+	else if (ft_check_stack(&stack_a)  != 0)
+		ft_sort_numbers(&stack_a, &stack_b, argc);
 	ft_free(&stack_a);
 	ft_free(&stack_b);
-	return (0);
 }

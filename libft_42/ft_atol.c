@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ckunimur <ckunimur@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 19:25:08 by ckunimur          #+#    #+#             */
-/*   Updated: 2023/05/31 16:19:31 by ckunimur         ###   ########.fr       */
+/*   Updated: 2023/06/13 12:15:34 by ckunimur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ static int	ft_isspace(int c)
 	return (0);
 }
 
-int	ft_atol(const char *nptr)
+long	ft_atol(const char *nptr)
 {
-	long int	num;
-	size_t		sign;
+	long long int	num;
+	size_t			sign;
 
 	while ((ft_isspace(*nptr)))
 		nptr++;
