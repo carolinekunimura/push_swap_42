@@ -6,7 +6,7 @@
 /*   By: ckunimur <ckunimur@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 15:03:13 by ckunimur          #+#    #+#             */
-/*   Updated: 2023/06/13 14:12:56 by ckunimur         ###   ########.fr       */
+/*   Updated: 2023/06/13 14:17:52 by ckunimur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	ft_sortthree(t_numbers	**stack_a)
 	}
 }
 
-void	ft_sort_fourfive(t_numbers **stack_a, t_numbers **stack_b, int argc)
+void	ft_sortfourfive(t_numbers **stack_a, t_numbers **stack_b, int argc)
 {
 	t_numbers	*temp;
 	int			i;
