@@ -6,7 +6,7 @@
 /*   By: ckunimur <ckunimur@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 15:03:13 by ckunimur          #+#    #+#             */
-/*   Updated: 2023/06/13 11:05:02 by ckunimur         ###   ########.fr       */
+/*   Updated: 2023/06/13 12:34:28 by ckunimur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_sorttwo(t_numbers	**stack_a)
 
 void	ft_sortthree(t_numbers	**stack_a)
 {
-	while (!ft_check_stack(stack_a))
+	while (ft_check_stack(stack_a) != 0)
 	{
 		if ((*stack_a)->number > ((*stack_a)->next->number)
 			&& (*stack_a)->next->number > ((*stack_a)->next->next->number))
