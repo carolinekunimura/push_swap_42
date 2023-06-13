@@ -6,7 +6,7 @@
 /*   By: ckunimur <ckunimur@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 15:03:13 by ckunimur          #+#    #+#             */
-/*   Updated: 2023/06/13 12:34:28 by ckunimur         ###   ########.fr       */
+/*   Updated: 2023/06/13 14:12:56 by ckunimur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	ft_sort_numbers(t_numbers **stack_a, t_numbers **stack_b, int argc)
 	else if (ft_lstsize(*stack_a) == 3)
 		ft_sortthree(stack_a);
 	else if (ft_lstsize(*stack_a) > 3 && ft_lstsize(*stack_a) < 6)
-		ft_sort_fourfive(stack_a, stack_b, argc - 1);
+		ft_sortfourfive(stack_a, stack_b, argc - 1);
 	else
 		ft_radix(argc, stack_a, stack_b);
 }

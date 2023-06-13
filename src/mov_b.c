@@ -6,7 +6,7 @@
 /*   By: ckunimur <ckunimur@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 14:45:29 by ckunimur          #+#    #+#             */
-/*   Updated: 2023/06/11 10:18:40 by ckunimur         ###   ########.fr       */
+/*   Updated: 2023/06/13 14:08:17 by ckunimur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_push_b(t_numbers	**stack_a, t_numbers	**stack_b)
 {
 	t_numbers	*temp;
 
-	if(!(*stack_a))
+	if (!(*stack_a))
 		return ;
 	temp = *stack_a;
 	(*stack_a) = (*stack_a)->next;

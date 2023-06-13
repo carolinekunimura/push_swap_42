@@ -6,7 +6,7 @@
 /*   By: ckunimur <ckunimur@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 16:04:38 by ckunimur          #+#    #+#             */
-/*   Updated: 2023/06/13 12:34:03 by ckunimur         ###   ########.fr       */
+/*   Updated: 2023/06/13 14:10:29 by ckunimur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	ft_free(t_numbers **stack)
 {
-	t_numbers *temp;
+	t_numbers	*temp;
 
-	while(*stack)
+	while (*stack)
 	{
 		temp = *stack;
 		*stack = (*stack)->next;
@@ -92,17 +92,6 @@ void	ft_put_index(t_numbers *stack)
 		temp = temp->next;
 	}
 }
-void	ft_print_stack(t_numbers *stack)
-{
-	t_numbers	*temp;
-
-	temp = stack;
-	while (temp)
-	{
-		ft_printf("%i\n", temp->number);
-		temp = temp->next;
-	}
-}
 
 int	main(int argc, char **argv)
 {
@@ -118,7 +107,7 @@ int	main(int argc, char **argv)
 	stack_b = NULL;
 	if (ft_check_duplicate(&stack_a) != 0)
 		return (ft_printf("Error\n"));
-	else if (ft_check_stack(&stack_a)  != 0)
+	else if (ft_check_stack(&stack_a) != 0)
 		ft_sort_numbers(&stack_a, &stack_b, argc);
 	ft_free(&stack_a);
 	ft_free(&stack_b);
